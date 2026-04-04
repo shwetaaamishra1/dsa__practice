@@ -1,0 +1,19 @@
+//8/3
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+
+        for(int i = 0; i < nums.size(); i++) {//i to end tak jayega
+
+            for(int j = i + 1; j < nums.size(); j++) { i+1 to end
+
+                if(nums[i] + nums[j] == target) {
+                    return {i, j};// add only 2 number
+                }
+
+            }
+        }
+
+        return {};
+    }
+};

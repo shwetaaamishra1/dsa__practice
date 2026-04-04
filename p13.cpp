@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+	int n,row,col;
+	cout<<"Enter the value of n";
+	cin>>n;
+	for(row=1;row<=n;row++){
+		for(col=1;col<=n-row;col++){
+			cout<<" "<<" ";
+		}
+		for(col=0;col<row;col++){
+			char a='A'+col;
+			cout<<a<<" ";
+		}
+		cout<<endl;
+	}
+}

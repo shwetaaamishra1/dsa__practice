@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stickman Fighter Pro</title>
+<style>
+body { margin:0; background:#000; color:white; text-align:center; }
+canvas { background:#111; display:block; margin:auto; }
+</style>
+</head>
+
+<body>
+<h2>⚔️ Stickman Fighter (WASD + Click)</h2>
+<canvas id="game" width="800" height="400"></canvas>
+
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+let keys = {};
+document.addEventListener("keydown", e => keys[e.key.toLowerCase()] = true);
+document.addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
+
+// LOAD XP (local save)
+let savedXP = localStorage.getItem("xp") || 0;
+
+let player = {
+  x: 100,
+  y: 200,
+  hp: 100,
+  speed: 4,
+  attack: 15,
+  xp: parseInt(savedXP),
+  attacking: false,
+  attackFrame: 0
+};
+
+let enemy = {
+  x: 600,
+  y: 200,
+  hp: 100,
+  speed: 2,
+  attack: 10
+};
+
+// SOUND
+function playHit(){
+  new Audio("https://www.soundjay.com/button/beep-07.wav").play();
+}
+
+// DRAW STICKMAN
+function drawStick(p, color){
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 3;
+
+  // head
+  ctx.beginPath();
+  ctx.arc(p.x, p.y-40, 10, 0, Math.PI*2);
+  ctx.stroke();
+
+  // body
+  ctx.beginPath();
+  ctx.moveTo(p.x, p.y-30);
+  ctx.lineTo(p.x, p.y);
+  ctx.stroke();
+
+  // legs
+  ctx.beginPath();
+  ctx.moveTo(p.x, p.y);
+  ctx.lineTo(p.x-10, p.y+20);
+  ctx.moveTo(p.x, p.y);
+  ctx.lineTo(p.x+10, p.y+20);
+  ctx.stroke();
+
+  // sword animation
+  ctx.beginPath();
+  if(p.attacking){
+    ctx.moveTo(p.x, p.y-20);
+    ctx.lineTo(p.x + 30, p.y-40 + p.attackFrame*5);
+  } else {
+    ctx.moveTo(p.x, p.y-20);
+    ctx.lineTo(p.x + 20, p.y-20);
+  }
+  ctx.stroke();
+}
+
+// PLAYER MOVE
+function movePlayer(){
+  if(keys["a"]) player.x -= player.speed;
+  if(keys["d"]) player.x += player.speed;
+}
+
+// ATTACK
+canvas.addEventListener("click", () => {
+  player.attacking = true;
+  player.attackFrame = 0;
+
+  // hit detection
+  if(Math.abs(player.x - enemy.x) < 50){
+    enemy.hp -= player.attack;
+    playHit();
+  }
+});
+
+// ENEMY AI
+function enemyAI(){
+  if(enemy.hp <= 0) return;
+
+  // move toward player
+  if(enemy.x > player.x) enemy.x -= enemy.speed;
+  else enemy.x += enemy.speed;
+
+  // attack if close
+  if(Math.abs(enemy.x - player.x) < 40){
+    player.hp -= enemy.attack * 0.02;
+  }
+}
+
+// UPDATE
+function update(){
+  movePlayer();
+  enemyAI();
+
+  // attack animation
+  if(player.attacking){
+    player.attackFrame++;
+    if(player.attackFrame > 5){
+      player.attacking = false;
+    }
+  }
+
+  // WIN
+  if(enemy.hp <= 0){
+    let gain = 10;
+    player.xp += gain;
+    localStorage.setItem("xp", player.xp);
+    alert("You win! +"+gain+" XP");
+    reset();
+  }
+
+  // LOSE
+  if(player.hp <= 0){
+    alert("You lost!");
+    reset();
+  }
+}
+
+// RESET
+function reset(){
+  player.hp = 100;
+  enemy.hp = 100;
+  player.x = 100;
+  enemy.x = 600;
+}
+
+// DRAW
+function draw(){
+  ctx.clearRect(0,0,800,400);
+
+  drawStick(player, "cyan");
+  drawStick(enemy, "red");
+
+  // HP bars
+  ctx.fillStyle="red";
+  ctx.fillRect(50,50,player.hp*2,10);
+  ctx.fillRect(550,50,enemy.hp*2,10);
+
+  // XP
+  ctx.fillStyle="white";
+  ctx.fillText("XP: "+player.xp, 10, 20);
+}
+
+// LOOP
+function gameLoop(){
+  update();
+  draw();
+  requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+</script>
+</body>
+</html>
