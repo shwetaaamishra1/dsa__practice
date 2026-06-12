@@ -1,0 +1,28 @@
+#include<iostream>
+#include<limits.h>
+using namespace std;
+
+void suffix(int a[],int n){
+    int suf[10];
+    int sum=0;
+    int j;
+    for(j=n-1;j>=0;j--){
+        sum += a[j];
+       suf[j] = sum;
+    }
+    for(j = 0; j < n; j++)
+    {
+        cout << suf[j] << " ";
+    }
+
+}
+
+int main(){
+    int n,i,a[10] ;
+    cout<< "Enter the size of input :";
+    cin>> n;
+    for(i=0;i<n;i++){
+        cin>> a[i];
+    }
+    suffix(a,n);
+}
