@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+    // where input is mentioned
+	// char arr[]={'a','p','p','l','e'};
+	// for(int i=0;i<5;i++)
+    // {
+    //     cout<<arr[i];
+    // }
+    //  variable size if  size is exact 20 because 20 index is assign for null character
+    // char arr[20];
+    // cin>>arr;
+    // cout<<arr;
+    // to put null character at particular index
+    // char arr[2]=/0;
+    String s="rohit";
+    cout<<s;
+    // for user input
+    cin>>s;
+    cout<<s;
+    getline(cin,s);
+    cout<<s;
+    // cout<<s.size();to get the size of thr strng
+
+    string s1="shweta",s2="mishra";
+
+    // string s3=s1+s2; another method for cocatenation is append
+     string s3=s1.append(s2);
+    //  concatenates character and string
+    s1+="pa";
+    s1+='p';
+    s1.push_back('p');
+    // last character is removed 
+    s1.pop_back();
+    cout <<s3
+    // escape character
+    // does not print entire sentences if no escape chaacter
+    string s="krishna is \"good\" just understand him everything becomes \"good\"";
+    cout<<s1
+    String s="\0";//prints blank
+}
+
+
+

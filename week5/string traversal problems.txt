@@ -1,0 +1,37 @@
+// problem on string
+#include<iostream>
+using namespace std;
+
+int main(){
+    string s="rohit";
+    int start=0,end =s.size()-1;
+    while(start <end)
+    {
+        swap(s[start],s[end]);
+        start++;end--;
+
+    }
+    cout<<s;
+    int size=0;
+    while(s!='\0')
+    {
+        size++;
+    }
+    cout<<endl;
+    cout<<size<<" ";
+
+    string s2="naman";
+    start=0,end=s2.size()-1;
+
+    while(start<end)
+    {
+        if(s2[start]!=s2[end])
+        {
+            cout<<"not a pallindrone";
+            return 0;
+        }
+        start++,end--;
+
+    }
+    cout<<"is a pallindrome";
+}

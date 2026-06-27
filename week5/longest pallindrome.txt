@@ -1,0 +1,59 @@
+class Solution {
+public:
+    int longestPalindrome(string s) {
+
+        // Frequency arrays for lowercase and uppercase letters
+        vector<int> lower(26, 0);
+        vector<int> upper(26, 0);
+
+        // Count frequencies
+        for (int i = 0; i < s.size(); i++) {
+
+            // Lowercase letter
+            if (s[i] >= 'a' && s[i] <= 'z') {
+                int index = s[i] - 'a';
+                lower[index]++;
+            }
+
+            // Uppercase letter
+            else {
+                int index = s[i] - 'A';
+                upper[index]++;
+            }
+        }
+
+        int count = 0;
+        bool odd = false;
+
+        // Calculate the maximum palindrome length
+        for (int i = 0; i < 26; i++) {
+
+            // For lowercase letters
+            if (lower[i] % 2 == 0) {
+                count += lower[i];
+            }
+            else {
+                // Use the even part
+                count += lower[i] - 1;
+                odd = true;
+            }
+
+            // For uppercase letters
+            if (upper[i] % 2 == 0) {
+                count += upper[i];
+            }
+            else {
+                // Use the even part
+                count += upper[i] - 1;
+                odd = true;
+            }
+        }
+
+        // If at least one odd frequency exists,
+        // place one character in the center
+        if (odd)
+            count++;
+
+        return count;
+    }
+};

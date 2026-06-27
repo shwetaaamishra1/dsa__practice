@@ -1,0 +1,22 @@
+// sort a string 
+string sort(string s){
+
+    vector<int>alpha(26,0);
+    for(int i=0;i<s.size();i++)
+    {
+        int index=s[i]-'a';
+        alpha[index]++;
+
+    }
+    // to print the string
+    string ans;
+    for(i=0;i<26;i++)
+    {
+        char c='a'+i;//all the values of apla are iterated one by one 
+        while(alpha[i])
+        {
+            ans+=c;
+            alpha[i]--;
+        }
+    }
+    return 1;                                                                                 
