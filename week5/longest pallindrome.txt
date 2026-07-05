@@ -30,7 +30,7 @@ public:
 
             // For lowercase letters
             if (lower[i] % 2 == 0) {
-                count += lower[i];
+                count += lower[i];//consist the times
             }
             else {
                 // Use the even part
