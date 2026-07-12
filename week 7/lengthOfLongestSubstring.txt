@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        // sliding window
+        vector<bool> count(256,0);
+        int first=0,second=0,len=0;
+
+        while(second<s.size())
+        {
+            // when my count is existing that is 1 
+            while(count[s[second]])
+            {
+                // this means we have come across a character that is already seen so now we change the position of our first
+                count[s[first]]=0;
+                first++;
+            }
+            count[s[second]]=1;
+            len=max(len,second-first+1);
+            second++;
+            
+        }
+        
+        return len;
+    }
+};

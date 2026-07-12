@@ -1,0 +1,46 @@
+int smallestWindow(string s)
+{
+    vector<int> count(256,0);
+
+    int distinct = 0;
+
+    // Count distinct characters
+    for(char ch : s)
+    {
+        if(count[ch] == 0)
+            distinct++;
+
+        count[ch]++;
+    }
+
+    // Reset frequency array
+    fill(count.begin(), count.end(), 0);
+
+    int first = 0;
+    int second = 0;
+    int remaining = distinct;
+    int ans = s.size();
+
+    while(second < s.size())
+    {
+        if(count[s[second]] == 0)
+            remaining--;
+
+        count[s[second]]++;
+        second++;
+
+        while(remaining == 0)
+        {
+            ans = min(ans, second - first);
+
+            count[s[first]]--;
+
+            if(count[s[first]] == 0)
+                remaining++;
+
+            first++;
+        }
+    }
+
+    return ans;
+}

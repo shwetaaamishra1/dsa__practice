@@ -1,0 +1,33 @@
+class Solution {
+    public:
+    int longestpresuf(string s ){
+        // creation of variables 
+        vector<int> lps(s.size(),0);
+        int pre=0,suf=1;
+
+        while(suf<=s.size()-1){
+
+        // if the characers at pre and suf is =
+
+        if(s[pre]==s[suf]){
+            lps[suf]=pre+1;
+            pre++;
+            suf++;
+        }else{
+        // if they are not equal either they can be zero or non zero
+            if(pre==0)
+            {
+                lps[suf]=0;
+                suf++;
+            }
+            else
+            {
+                pre=lps[prefix-1];
+                
+            }
+        }
+        }
+        return lps[s.size()-1];
+    }
+}
+
