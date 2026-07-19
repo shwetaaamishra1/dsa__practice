@@ -1,0 +1,30 @@
+//  pointers
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a=1;
+    cout<<&a<<endl;
+    int *ptr=&a;
+    couut<<sizeof(ptr)<<endl;
+    float m=2.3;
+    float *ptr1 =&m;
+    cout<<sizeof[ptr];
+
+    int*ptr=&a;
+    cout<<ptr<<endl;// prints address of a
+     cout<<*ptr<<endl;// value inside a
+     int b=20;
+     ptr=&b;
+     cout<<ptr<<endl;// prints address of a
+     cout<<*ptr<<endl;// value inside a
+     b=30;
+      cout<<*ptr<<endl;// value inside a
+
+
+}
+
+
+

@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+    int arr[5]={1,2,3,4,5};
+
+    int *ptr=arr;
+    //print the address of the irst element 
+    cout<<arr<<endl;
+    cout<<arr+0<<endl;
+    cout<<&arr[0]<<endl;
+
+     cout<<arr+1<<endl;
+       cout<<&arr[1]<<endl;
+
+
+       // to print the value
+
+       cout<<arr[0];
+       cout<<*arr<<endl;
+       cout<<*[arr+0]<<endl;
+       cout<<ptr;
+
+       //to print all address 
+        for(int i=0;i<5;i++)
+        cout<<arr+i<<endl;
+
+
+    //to print all values
+        for(int i=0;i<5;i++)
+        cout<<*[arr+i]<<endl;
+     
+
+
+}

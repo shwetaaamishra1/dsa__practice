@@ -1,0 +1,42 @@
+// minimum characters to be added at fron to make  string pallindrome
+
+class Solution {
+    public:
+    int minChar(string str){
+        // string reverse
+        string rev =str;
+        reverse(rev.begin(),rev.end());
+        int size =str.size();
+        str+='$';
+        str+=rev;
+
+        // longest prefix susuffix
+
+        int n=str.size();
+        vector<int>lps(n,0);
+
+        int pre=0,suf=1;
+        while(suf<str.size())
+        {
+            // match
+            if(str[pre]=str[suf])
+            {
+                lps[suf]=pre+1;
+                pre++;suf++;
+            }
+            // notmatch
+            else{
+                if(pre==0)
+                suf++;
+                else{
+                    pre=lps[pre-1];
+                }
+            }
+        }
+        // ans
+        return size-lps[n-1];
+
+
+
+    }
+}
