@@ -1,0 +1,14 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+    char arr[5]="1234";
+    char *ptr=arr;
+    cout<<(void*)arr<<endl;
+    cout<<(void*)ptr<<endl;// it prints the address if we do not give void pointer it means that we are giving a pointer that does not know which kind of data is there in memory that is reads only the address
+    char name='a';
+    char *ptr1=&name;
+    cout<<(void*)ptr1;
+    //cout<<(void*)&name;
+    //instead of void* we can give static_cast
+}

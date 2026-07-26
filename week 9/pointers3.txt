@@ -1,0 +1,56 @@
+#include<iostream>
+using namespace std;
+
+void swapping(int *ptr1,int *ptr2)//pass & &
+{
+    int temp=*ptr1;//not pointers when address arte passed
+    *ptr1=*ptr2;
+    *ptr2=temp;
+    cout<<ptr1<<endl;
+    cout<<ptr2<<endl;
+    cout<<*ptr1<<endl;
+    cout<<*ptr2<<endl;
+}
+void pass(vector<int>&temp){
+    for(int i=0;i<5;i++){
+      temp[i]=20;  
+    }
+}
+void dob(int p[]){
+    for(int i=0;i<5;i++){
+        p[i]=p[i]*2;
+    }
+}
+
+int main(){
+    //reference variables
+    int num=10;
+    int &temp=num;
+    cout<<temp;
+    temp++;
+    cout<<temp;
+    cout<<&temp<<&num;// the addresses are th e same
+    int first=10,second=30;
+    cout<<&first<<endl;
+    cout<<&second<<endl;
+    swapping(&first,&second);//swapping first second
+    cout<<first<<" "<<second;
+    vector<int>v(5,0);
+    pass(v);
+    for(int i=0;i<5;i++)
+    {
+        cout<<v[i]<<" ";
+    }
+    int arr[5]={1,2,34,5,5};
+    dob(arr);
+     for(int i=0;i<5;i++){
+       cout<<arr[i]<<" ";
+    }
+    //vec str reference
+    //int arr,char pointer
+
+
+}
+// pointers are a bit complex o refrence variables can be used
+//eg int &temp=num;if 100 is ml then temp and num are pointing to same loation 2 name but location
+// this helps in swapping passing value not address there is pass by value ,reference that is address ad pass by value

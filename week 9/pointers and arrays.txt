@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+     int arr={1,2,3,4,5};
+     int *ptr=&a;
+//   print all the  value
+
+    for(int i=0;i<5;i++)
+    cout<<ptr[i]<<" ";
+
+    
+    // print all the address
+
+    for(int i=0;i<5;i++)
+    {
+        cout<<ptr+i<<endl;
+    }
+    // arithmetic operations on ptr
+    for(int i=0;i<5;i++){  //if i give i go till 8 then it is accessing location  but give random nuumder
+    cout<<ptr<<" ";
+    ptr++;
+    }
+    // going back in an array using pointer
+     for(int i=4;i>=0;i--){
+        cout<<ptr<<" ";
+        ptr--;
+    }
+    // addition
+    ptr=ptr+3;
+    ptr=ptr-2;
+    // ptr is a pointer so ptr=ptr+i*4 4 is the byte of integer
+    // if arr is increment because it is constant in symbol table
+    
+}
+
+
