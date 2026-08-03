@@ -1,0 +1,79 @@
+void f1(){}
+void f2(){}
+void f3(){
+    f1()
+}
+
+int main()
+{
+    int x,y,z;
+    x=10,y=20;
+    f1();
+    f2();
+    f3();
+}
+// once f1 is called the f1 is placeonthe stack before that main function in stackonce f1 and f2 asre called they are stored onstack once they complete the work they will be removed from thstack.
+//for f3 is called f3 is on stack and in that f1 is called so f3 on stack and then f1 is placed above f3;
+once all completed they will be removed
+___________________________________________________
+if i want the memory from the heap 
+int n;
+cin>>n;
+int arr[n];
+//if i want 1 lakh size of array stack cannot fullfill it it will give an error
+instead we get int a[100];
+// arrays are stored in stack one by one but if i wat it in heap i have to give new int
+
+int *ptr =new int ;
+//int type ka data in heap using new it gives address of the int data in the heap
+and stores in pointer ptr same for float
+
+//for storing array in heap
+
+int *ptr1=new int[20];
+
+ptr1 stores address of 0th index of array
+
+//where do pointer get the memory?
+
+--stored in stack once the main function is over stack memory is deleted but not in heap
+heap is to be deleted by me 
+--keyword delete.
+
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    //variable ke liye heap memory allocate karo
+    int *ptr=new int;
+    *ptr=5;
+    //assignment of value
+    cout<<ptr<<endl;
+
+    float *ptr2 =new float;
+    *ptr2=3.6;
+    cout<<ptr2<<endl;
+
+    int n;
+    cout<<"Enter the size of array";
+    cin>>n;
+    int *p=new int[n];
+   //put values
+
+   for(int i=0;i<n;i++)
+   p[i]=i+1;
+   //print the value 
+
+   for(int i=0;i<n;i++)
+   cout<<p[i]<<endl;
+
+   //delete ptr;
+   delete ptr2;
+   delete[] p;
+
+    
+}
+
+  
