@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+void print(int num, int N)
+{
+    if(num==N)
+    {
+        cout<<num<<endl;
+        return;
+    }
+    cout<<num<<endl;
+    print(num+1,N);
+}
+
+int main(){
+    //print number from 1 to N
+    int N;
+    cin>>N;
+    print(1,N);
+}
+// if now  have topss only one order
+
+#include<iostream>
+using namespace std;
+
+void print(int N)
+{
+
+    if(N==1){
+        cout<<1<<endl; //if orint is written below cout prints in reverse order;
+        return;
+    }
+    print(n-1);
+    cout<<N<<endl;
+}
+
+int main(){
+    int N;
+    cin>>N;
+    print(N);
+}
