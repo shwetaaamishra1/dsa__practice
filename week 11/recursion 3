@@ -1,0 +1,64 @@
+//Recursion
+
+// fibonicci Series
+
+#include<iostream>
+using namespace std;
+
+int fib(int n){
+   // if(n<=1)
+   if(n==0)
+   {
+    return 1;
+   }
+    return fib(n-1)+fib(n-2);
+}
+
+int main()
+{
+    int n;
+    cout<<"enter the value of n";
+    cin>>n;
+
+    fib(n);
+}
+
+//nth stair problem
+
+#include<iostream>
+using namespace std;
+int nstair(int n){
+    if(n==0)
+    return 1;
+
+    return nstair(n-1) + nstair(n-2);
+}
+
+int main(){
+    //the nth stair to be taken
+    int n;
+    cout<<"enter the value of n";
+    cin>>n;
+    nstair(int n);
+}
+
+//the above proble gives a time limit exceeded
+
+
+//gcd using recursion
+#include<iostream>
+using namespace std;
+int gcd(int n1,int n2){
+    if(n2==0){
+        return a;
+    }
+
+    return gcd(n2 ,n1%n2);
+
+}
+int main(){
+    int n1,n2;
+    cout<<"enter the value for 2 numbers ";
+    cin>>n1>>n2;
+    cout<<gcd(n1,n2);
+}

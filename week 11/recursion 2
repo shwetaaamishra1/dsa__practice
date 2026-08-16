@@ -1,0 +1,81 @@
+//sum of n natural number using recursion
+
+#include<iostream>
+using namespace std;
+
+int sumOfNat(int n){
+    //base case 
+    if(n==1){
+        return 1;
+    }
+    return n+sumOfNat(n-1);
+}
+
+int main(){
+    int n;
+    cout<<"enter the value of n till whose sum you want: ";
+    cin>>n;
+
+    sumOfNat(n);
+}
+
+//power of 2
+
+#include<iostream>
+using namespace std;
+
+int pow(int n){
+    if(n==1)
+    {
+        return 2;
+    }
+    return 2* pow(n-1);
+}
+
+int main(){
+    int n;
+    cout<<"enter the value of n of which power of 2 you want to dispaly";
+    cin>>n;
+
+    pow(n);
+}
+
+//  for any pow of any num
+#include<iostream>
+using namespace std;
+
+int pow(int n,int num){
+    if(n==1)
+    {
+        return num;
+    }
+    return num* pow(n-1);
+}
+
+int main(){
+    int n,num;
+    cout<<"enter the value of n of which power of number you want to dispaly";
+    cin>>n;
+    cout<<"enter the number";
+
+    pow(n,num);
+}
+
+//sum of square of n number
+
+#include<iostream>
+using namespace std;
+int sumOfSq(int n){
+    if(n==1){
+        return 1;
+    }
+    return n*n + sumOfSq(n-1);
+}
+
+int main(){
+    int n;
+    cout<<" enter the value of n tll whose sum of squares you want ";
+    cin>>n;
+
+    sumOfSq(n);
+}

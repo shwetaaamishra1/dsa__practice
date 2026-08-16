@@ -39,3 +39,47 @@ int main(){
     cin>>N;
     print(N);
 }
+
+//print all even number till n using recursion
+
+#include<iostream>
+using namespace std;
+void printeven(int num)
+{
+    if(num==N){
+        cout<<num;
+        return;
+    }
+    cout<<num<<" ";
+    printeven(num+2,N);
+}
+int main(){
+    int N;
+    cin>>N;
+
+    if(N%2==1)
+    N--;
+    printeven(2,N);
+
+}
+// if i have to print even but recursion is going in reverse order 
+#include<iostream>
+using namespace std;
+void main(int N)
+{
+    if(N==2)
+    {
+        cout<<29;
+        return
+    }
+    printeven(N-);
+    cout<<N<<endl;
+}
+int main()
+{
+    int N;
+    cin>>N;
+    if(N%2==1)
+    N--;
+    print even1(N);
+}
